@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter';
+}
 html,
 body {
   margin: 0;
@@ -9,7 +13,7 @@ body {
 }
 .App {
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   /* display: flex;
   justify-content: center; */
