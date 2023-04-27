@@ -1,8 +1,7 @@
-.cardContainer {
+.card {
   width: 13rem;
-  /* height: 16rem; */
   padding: 1.6rem 0.5rem;
-
+  max-height: 15rem;
   background: #ffffff;
   border: 1px solid #f3f3f3;
   border-radius: 40px;
@@ -14,9 +13,9 @@
 
   position: relative;
 }
-.cardContainer:hover {
-  position: absolute;
-  top: -5;
+.card:hover {
+  /* position: absolute; */
+  /* top: -5; */
 
   background: #ffffff;
   border: 1px solid #f8f8f8;
@@ -30,6 +29,7 @@
   position: absolute;
   top: 1.8rem;
   left: 2.2rem;
+  cursor: pointer;
 }
 .cardTitle {
   font-size: 14px;
@@ -61,4 +61,13 @@
   /* identical to box height */
 
   color: #000000;
+}
+.red {
+  position: absolute;
+  top: 1.8rem;
+  left: 2.2rem;
+  color: red;
+
+  /* background-color: red; */
+  cursor: pointer;
 }
