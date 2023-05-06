@@ -1,12 +1,17 @@
-import React from 'react';
-import { Card, CardContainer, Header, Wrapper } from '../../components';
-import data from '../../data';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { CardContainer, Header, Wrapper } from '../../components';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchItems } from '../../redux/thunk';
 
 export const Home = () => {
-  const { allSneakers } = data;
-  const state = useSelector((state) => state);
-  console.log(state);
+  const { allSneakers } = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchItems(`http://localhost:5000/allSneakers`, `SAVE_ALL_SNEAKERS`));
+  }, []);
+
   return (
     <div className="homeContainer">
       <Wrapper>
@@ -14,7 +19,6 @@ export const Home = () => {
       </Wrapper>
       <Wrapper>
         <CardContainer items={allSneakers} />
-        {/* <CardContainer items={allSneakers} /> */}
       </Wrapper>
     </div>
   );
