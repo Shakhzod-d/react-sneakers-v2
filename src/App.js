@@ -1,12 +1,22 @@
-import { Home } from './pages/home/Home';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { Favorites, Home } from './pages';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />,
+    },
+    {
+      path: '/favorites',
+      element: <Favorites />,
+    },
+  ]);
+
+  return <RouterProvider router={router} fallbackElement={<h3>loading</h3>} />;
 }
 
 export default App;

@@ -18,6 +18,13 @@ const saveAllSneakers = (state, allSneakers = []) => {
   };
 };
 
+const saveFavoriteSneakers = (state, favorites = []) => {
+  return {
+    ...state,
+    favorites,
+  };
+};
+
 const sneakersReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_FAVOURITE':
@@ -25,6 +32,9 @@ const sneakersReducer = (state = initialState, action) => {
 
     case `SAVE_ALL_SNEAKERS`:
       return saveAllSneakers(state, action.payload);
+
+    case `SAVE_FAVORITE_SNEAKERS`:
+      return saveFavoriteSneakers(state, action.payload);
 
     default:
       return state;
