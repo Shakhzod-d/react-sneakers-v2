@@ -4,23 +4,23 @@ import { useDispatch } from 'react-redux';
 
 import './Card.css';
 
-export const Card = ({ item }) => {
+export const Card = ({ item, onClickItem }) => {
   const { id, imageUrl, price, title } = item;
-  const [isLiked, setLiked] = React.useState(false);
+
   const dispatch = useDispatch();
 
-  const hanleLike = (item) => {
-    dispatch({ type: 'ADD_TO_FAVOURITE', payload: item });
-    setLiked((prevValue) => !prevValue);
-  };
+  // const hanleLike = (item) => {
+  //   dispatch({ type: 'ADD_TO_FAVOURITE', payload: item });
+  //   setLiked((prevValue) => !prevValue);
+  // };
 
   return (
     <div className="card">
       <div className="cardHeader">
         <BsHeart
-          className={isLiked ? 'red' : 'emptyHeart'}
+          className={item.isLiked ? 'red' : 'emptyHeart'}
           size={24}
-          onClick={() => hanleLike(item)}
+          onClick={() => onClickItem(item)}
         />
         <img width={'100%'} src={imageUrl} alt="green sneakers" />
       </div>

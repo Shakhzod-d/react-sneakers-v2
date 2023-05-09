@@ -4,12 +4,12 @@ import { Card } from '../Card/Card';
 
 import './CardContainer.css';
 
-export const CardContainer = ({ items }) => {
+export const CardContainer = ({ items, onClickItem }) => {
   //   console.log(data);
   return (
     <div className="cardContainer">
       {items.map((item) => {
-        return <Card key={item.id} item={item} />;
+        return <Card key={item.id} item={item} onClickItem={onClickItem} />;
       })}
     </div>
   );
