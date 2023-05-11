@@ -2,24 +2,36 @@ import React, { useEffect } from 'react';
 import { CardContainer, Header, Wrapper } from '../../components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems, likeSneakers, postItem } from '../../redux/thunk';
+import { deleteItem, fetchItems, likeSneakers, postItem } from '../../redux/thunk';
+import { addToFavorites } from './helpers';
 
 export const Home = () => {
   const { allSneakers } = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  const addToFavorites = (sneakersObj) => {
-    const likedSneakers = {
-      ...sneakersObj,
-      isLiked: true,
-    };
+  // export function addToFavorites(sneakersObj) {
+  //   const likedSneakers = {
+  //     ...sneakersObj,
+  //     isLiked: true,
+  //   };
+  //   // console.log(sneakersObj);
 
-    const url = `http://localhost:3030/favorites`;
-    dispatch(postItem(url, likedSneakers));
+  //   if (sneakersObj.isLiked) {
+  //     console.log(sneakersObj);
+  //     // 1 .
+  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
+  //     dispatch(likeSneakers(likedUrl, { isLiked: false }));
 
-    const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
-    dispatch(likeSneakers(likedUrl, { isLiked: true }));
-  };
+  //     const url = `http://localhost:3030/favorites/${sneakersObj.id}`;
+  //     dispatch(deleteItem(url));
+  //   } else {
+  //     const url = `http://localhost:3030/favorites`;
+  //     dispatch(postItem(url, likedSneakers));
+
+  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
+  //     dispatch(likeSneakers(likedUrl, { isLiked: true }));
+  //   }
+  // }
 
   useEffect(() => {
     dispatch(fetchItems(`http://localhost:3030/allSneakers`, `SAVE_ALL_SNEAKERS`));

@@ -1,14 +1,14 @@
-export const fetchItems = (url, ACTION_NAME) => async (disatch) => {
+export const fetchItems = (url, ACTION_NAME) => async (dispatch) => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    disatch({ type: ACTION_NAME, payload: data });
+    dispatch({ type: ACTION_NAME, payload: data });
   } catch (error) {
     console.error('ERROR FETCH ITEMS');
   }
 };
 
-export const postItem = (url, sneakersObj) => async (disatch) => {
+export const postItem = (url, sneakersObj) => async (dispatch) => {
   try {
     const config = {
       method: 'POST',
@@ -22,7 +22,7 @@ export const postItem = (url, sneakersObj) => async (disatch) => {
     const response = await fetch(url, config);
     const data = await response.json();
     // console.log(data);
-    // disatch({ type: ACTION_NAME, payload: data });
+    // dispatch({ type: ACTION_NAME, payload: data });
   } catch (error) {
     console.error('ERROR FETCH ITEMS');
   }
@@ -45,5 +45,18 @@ export const likeSneakers = (url, likedSneakersObj) => async (dispatch) => {
     }
   } catch (error) {
     console.error('ERROR FETCH ITEMS');
+  }
+};
+
+export const deleteItem = (url, navigate) => async (dispatch) => {
+  try {
+    const response = await fetch(url, { method: 'DELETE' });
+    const data = await response.json();
+    // if (response.ok) {
+    //   navigate('/');
+    // }
+    // dispatch({ type: ACTION_NAME, payload: data });
+  } catch (error) {
+    console.error('ERROR DELETE ITEM');
   }
 };

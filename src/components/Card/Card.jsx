@@ -3,11 +3,13 @@ import { BsHeart } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 
 import './Card.css';
+import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ item, onClickItem }) => {
   const { id, imageUrl, price, title } = item;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // const hanleLike = (item) => {
   //   dispatch({ type: 'ADD_TO_FAVOURITE', payload: item });
@@ -20,7 +22,7 @@ export const Card = ({ item, onClickItem }) => {
         <BsHeart
           className={item.isLiked ? 'red' : 'emptyHeart'}
           size={24}
-          onClick={() => onClickItem(item)}
+          onClick={() => onClickItem(item, dispatch, navigate)}
         />
         <img width={'100%'} src={imageUrl} alt="green sneakers" />
       </div>

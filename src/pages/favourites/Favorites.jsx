@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { CardContainer, Header, Wrapper } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchItems } from '../../redux/thunk';
+import { addToFavorites } from '../home/helpers';
 
 export const Favorites = () => {
   const { allSneakers } = useSelector((state) => state);
@@ -17,7 +18,7 @@ export const Favorites = () => {
         <Header />
       </Wrapper>
       <Wrapper>
-        <CardContainer items={allSneakers} />
+        <CardContainer onClickItem={addToFavorites} items={allSneakers} />
       </Wrapper>
     </div>
   );
