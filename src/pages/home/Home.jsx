@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { CardContainer, Header, Wrapper } from '../../components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems, likeSneakers, postItem } from '../../redux/thunk';
+
+import { deleteItem, fetchItems, likeSneakers, postItem } from '../../redux/thunk';
 import { useNavigate } from 'react-router-dom';
+import { addToFavorites } from './helpers';
+
 
 export const Home = () => {
   const [pageCount, setPageCount] = React.useState(1);
@@ -11,18 +14,29 @@ export const Home = () => {
   const dispatch = useDispatch();
   const navigete = useNavigate();
 
-  const addToFavorites = (sneakersObj) => {
-    const likedSneakers = {
-      ...sneakersObj,
-      isLiked: true,
-    };
+  // export function addToFavorites(sneakersObj) {
+  //   const likedSneakers = {
+  //     ...sneakersObj,
+  //     isLiked: true,
+  //   };
+  //   // console.log(sneakersObj);
 
-    const url = `http://localhost:3030/favorites`;
-    dispatch(postItem(url, likedSneakers));
+  //   if (sneakersObj.isLiked) {
+  //     console.log(sneakersObj);
+  //     // 1 .
+  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
+  //     dispatch(likeSneakers(likedUrl, { isLiked: false }));
 
-    const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
-    dispatch(likeSneakers(likedUrl, { isLiked: true }));
-  };
+  //     const url = `http://localhost:3030/favorites/${sneakersObj.id}`;
+  //     dispatch(deleteItem(url));
+  //   } else {
+  //     const url = `http://localhost:3030/favorites`;
+  //     dispatch(postItem(url, likedSneakers));
+
+  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
+  //     dispatch(likeSneakers(likedUrl, { isLiked: true }));
+  //   }
+  // }
 
   const inc = () => {
     setPageCount((prevValue) => prevValue + 1);

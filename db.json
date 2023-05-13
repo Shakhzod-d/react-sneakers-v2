@@ -5,7 +5,7 @@
       "title": "Мужские Кроссовки Nike Blazer Mid Suede",
       "price": "12999",
       "imageUrl": "/assets/images/1.jpg",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "2",
@@ -26,7 +26,7 @@
       "title": "Кроссовки Puma X Aka Boku Future Rider",
       "price": "8999",
       "imageUrl": "/assets/images/4.jpg",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "5",
@@ -40,14 +40,14 @@
       "title": "Мужские Кроссовки Nike Air Max 270",
       "price": "12999",
       "imageUrl": "/assets/images/6.jpg",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "7",
       "title": "Мужские Кроссовки Nike Blazer Mid Suede",
       "price": "8499",
       "imageUrl": "/assets/images/7.jpg",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "8",
@@ -68,46 +68,10 @@
       "title": "Кроссовки Puma X Aka Boku Future Rider",
       "price": "8999",
       "imageUrl": "/assets/images/10.jpg",
-      "isLiked": true
+      "isLiked": false
     }
   ],
   "cart": [],
-  "favorites": [
-    {
-      "id": "4",
-      "title": "Кроссовки Puma X Aka Boku Future Rider",
-      "price": "8999",
-      "imageUrl": "/assets/images/4.jpg",
-      "isLiked": true
-    },
-    {
-      "id": "1",
-      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "price": "12999",
-      "imageUrl": "/assets/images/1.jpg",
-      "isLiked": true
-    },
-    {
-      "id": "7",
-      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
-      "price": "8499",
-      "imageUrl": "/assets/images/7.jpg",
-      "isLiked": true
-    },
-    {
-      "id": "6",
-      "title": "Мужские Кроссовки Nike Air Max 270",
-      "price": "12999",
-      "imageUrl": "/assets/images/6.jpg",
-      "isLiked": true
-    },
-    {
-      "id": "10",
-      "title": "Кроссовки Puma X Aka Boku Future Rider",
-      "price": "8999",
-      "imageUrl": "/assets/images/10.jpg",
-      "isLiked": true
-    }
-  ],
+  "favorites": [],
   "order": []
 }
