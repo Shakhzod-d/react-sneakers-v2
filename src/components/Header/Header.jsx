@@ -5,11 +5,15 @@ import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
 
-export const Header = () => {
+export const Header = ({ open }) => {
   const navigate = useNavigate();
 
   const openFavoritesPage = () => {
     navigate(`/favorites`);
+  };
+
+  const openCartModal = () => {
+    console.log(1);
   };
 
   return (
@@ -23,10 +27,13 @@ export const Header = () => {
       </div>
 
       <div className="headerRight">
-        <span>
-          <BsCart2 size={24} />
-        </span>
-        <span>1205 руб.</span>
+        <div className="cartIconContainer" onClick={open}>
+          <span>
+            <BsCart2 size={24} />
+          </span>{' '}
+          &nbsp;
+          <span>1205 руб.</span>
+        </div>
         <span onClick={openFavoritesPage} style={{ cursor: 'pointer' }}>
           <BsHeart size={24} />
         </span>

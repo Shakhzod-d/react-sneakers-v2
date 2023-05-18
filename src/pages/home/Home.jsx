@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CardContainer, Header, Wrapper } from '../../components';
+import { CardContainer, Header, Modal, Wrapper } from '../../components';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -7,43 +7,18 @@ import { deleteItem, fetchItems, likeSneakers, postItem } from '../../redux/thun
 import { useNavigate } from 'react-router-dom';
 import { addToFavorites } from './helpers';
 
-
 export const Home = () => {
   const [pageCount, setPageCount] = React.useState(1);
+  const [isOpen, setOpen] = React.useState(false);
   const { allSneakers } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigete = useNavigate();
-
-  // export function addToFavorites(sneakersObj) {
-  //   const likedSneakers = {
-  //     ...sneakersObj,
-  //     isLiked: true,
-  //   };
-  //   // console.log(sneakersObj);
-
-  //   if (sneakersObj.isLiked) {
-  //     console.log(sneakersObj);
-  //     // 1 .
-  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
-  //     dispatch(likeSneakers(likedUrl, { isLiked: false }));
-
-  //     const url = `http://localhost:3030/favorites/${sneakersObj.id}`;
-  //     dispatch(deleteItem(url));
-  //   } else {
-  //     const url = `http://localhost:3030/favorites`;
-  //     dispatch(postItem(url, likedSneakers));
-
-  //     const likedUrl = `http://localhost:3030/allSneakers/${sneakersObj.id}`;
-  //     dispatch(likeSneakers(likedUrl, { isLiked: true }));
-  //   }
-  // }
 
   const inc = () => {
     setPageCount((prevValue) => prevValue + 1);
   };
 
   useEffect(() => {
-    // http://localhost:3030/allSneakers?_page=3&_limit=4
     const mainUrl = `http://localhost:3030`;
     const restUrl = `/allSneakers?_page=${pageCount}&_limit=4`;
     dispatch(fetchItems(`${mainUrl}${restUrl}`, `SAVE_ALL_SNEAKERS`));
@@ -52,8 +27,9 @@ export const Home = () => {
 
   return (
     <div className="homeContainer">
+      <Modal isOpen={isOpen} close={() => setOpen(false)} />
       <Wrapper>
-        <Header />
+        <Header open={() => setOpen(true)} />
       </Wrapper>
       <Wrapper>
         <CardContainer onClickItem={addToFavorites} items={allSneakers} />
