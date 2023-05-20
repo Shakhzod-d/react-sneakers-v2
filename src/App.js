@@ -1,18 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { Favorites, Home, NotFound } from './pages';
+import { AddNewSneakers, Favorites, Home, NotFound } from './pages';
 
 import './App.css';
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/*',
+      path: '/allSneakers/*',
       element: <Home />,
     },
     {
       path: '/favorites',
       element: <Favorites />,
+    },
+    {
+      path: '/addNewSneakers',
+      element: <AddNewSneakers />,
     },
     {
       path: '*',

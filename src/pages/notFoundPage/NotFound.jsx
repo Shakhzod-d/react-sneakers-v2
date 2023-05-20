@@ -6,8 +6,8 @@ import './NotFound.css';
 export const NotFound = () => {
   return (
     <div className="notFoundPage">
-      <h3>Not Found Page</h3> 
-      <Link to={'/'}>Go home</Link>
+      <h3>Not Found Page</h3>
+      <Link to={'/allSneakers'}>Go home</Link>
     </div>
   );
 };
