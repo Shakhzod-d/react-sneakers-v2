@@ -20,7 +20,7 @@ export const Home = () => {
 
   useEffect(() => {
     const mainUrl = `http://localhost:3030`;
-    const restUrl = `/allSneakers?_page=${pageCount}&_limit=4`;
+    const restUrl = `/allSneakers/?_page=${pageCount}&_limit=4`;
     dispatch(fetchItems(`${mainUrl}${restUrl}`, `SAVE_ALL_SNEAKERS`));
     navigete(restUrl);
   }, [pageCount]);
