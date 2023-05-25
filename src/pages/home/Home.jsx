@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteItem, fetchItems, likeSneakers, postItem } from '../../redux/thunk';
 import { useNavigate } from 'react-router-dom';
 import { addToFavorites } from './helpers';
+import { MUIPagination } from '../../components/Pagination/Pagination';
 
 export const Home = () => {
   const [pageCount, setPageCount] = React.useState(1);
@@ -33,9 +34,7 @@ export const Home = () => {
       </Wrapper>
       <Wrapper>
         <CardContainer onClickItem={addToFavorites} items={allSneakers} />
-      </Wrapper>
-
-      <Wrapper>
+        <MUIPagination changePageCount={setPageCount} />
         <div style={{ margin: '4rem auto' }}>
           <button onClick={() => setPageCount((prevValue) => prevValue - 1)}>
             Go back one page

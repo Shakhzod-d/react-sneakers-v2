@@ -8,25 +8,30 @@ export const fetchItems = (url, ACTION_NAME) => async (dispatch) => {
   }
 };
 
-export const postItem = (url, sneakersObj) => async (dispatch) => {
-  try {
-    const config = {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(sneakersObj),
-    };
+export const postItem =
+  (url, sneakersObj, successFunc = () => {}) =>
+  async (dispatch) => {
+    try {
+      const config = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sneakersObj),
+      };
 
-    const response = await fetch(url, config);
-    const data = await response.json();
-    // console.log(data);
-    // dispatch({ type: ACTION_NAME, payload: data });
-  } catch (error) {
-    console.error('ERROR FETCH ITEMS');
-  }
-};
+      const response = await fetch(url, config);
+      if (response.ok) {
+        successFunc();
+      }
+      // const data = await response.json();
+      // console.log(data, response);
+      // dispatch({ type: ACTION_NAME, payload: data });
+    } catch (error) {
+      console.error('ERROR POST ITEMS');
+    }
+  };
 
 export const likeSneakers = (url, likedSneakersObj) => async (dispatch) => {
   try {

@@ -1,0 +1,20 @@
+.colors {
+  height: 100vh;
+  /*  view hight */
+  display: flex;
+  justify-content: center;
+  /* align-items: flex-end; */
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+  font-size: xx-large;
+}
+.red {
+  flex-grow: 5;
+}
+.green {
+  flex-grow: 2;
+}

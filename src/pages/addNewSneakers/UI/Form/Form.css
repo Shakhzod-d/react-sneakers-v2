@@ -35,6 +35,8 @@
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .form__control label {
@@ -43,15 +45,11 @@
 }
 
 .form__control input {
-  /* border: 2px solid #f0f0f0; */
   border-radius: 4px;
   display: block;
   font-family: inherit;
   font-size: 14px;
-  width: 100%;
   padding: 10px;
-  /* border-color: none; */
-  /* border: none; */
   outline: none;
 }
 
@@ -93,8 +91,8 @@
 }
 
 .form button {
-  background-color: #355ef3;
-  border: 2px solid #1326fa;
+  background-color: #9dd558;
+  border: none;
   border-radius: 4px;
   color: #eee;
   display: block;
