@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+}
+
+.pimg1 {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://hips.hearstapps.com/hmg-prod/images/first-day-of-winter-solstice-2021-1638278570.jpg?crop=1.00xw:0.803xh;0.00160xw,0.197xh&resize=1200:*');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ptext {
+  width: 20rem;
+  height: 4rem;
+  background-color: #383434;
+  color: #fff;
+  text-align: center;
+  font-size: x-large;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

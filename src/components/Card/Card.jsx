@@ -1,9 +1,9 @@
 import React from 'react';
 import { BsHeart } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import './Card.css';
-import { useNavigate } from 'react-router-dom';
 
 export const Card = ({ item, onClickItem }) => {
   const { id, imageUrl, price, title } = item;

@@ -1,0 +1,51 @@
+.parent {
+  margin: 0 auto;
+  width: calc(70% - 2rem);
+  /* min-height: 100vh; */
+  padding: 2rem;
+  border: 1px solid red;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+.child {
+  width: 400px;
+  height: 300px;
+  border: 1px solid green;
+}
+/* mobile version */
+@media (min-width: 390px) and (max-width: 720px) {
+  .parent {
+    width: 100%;
+
+    background-color: aqua;
+  }
+  .child {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+  }
+}
+
+/* tablet veersion */
+@media (min-width: 720px) and (max-width: 1024px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  .parent {
+    /* margin: 0; */
+    /* padding: 0; */
+    width: 100%;
+    background-color: red;
+    box-sizing: border-box;
+  }
+  .child {
+    box-sizing: border-box;
+
+    width: calc(100% / 2);
+    background-color: aqua;
+  }
+}
