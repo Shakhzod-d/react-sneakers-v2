@@ -3,9 +3,8 @@ import { useForm } from 'react-hook-form';
 import './Form.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { postItem } from '../../../../redux/thunk';
 
-export const Form = () => {
+export const Form = ({ addItem }) => {
   const {
     register,
     handleSubmit,
@@ -14,22 +13,6 @@ export const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const successFunc = () => {
-    window.alert('New sneakers successfully created');
-    navigate(`/allSneakers/*`);
-  };
-
-  const submit = (data) => {
-    let time = Date.now();
-    const newData = {
-      ...data,
-      id: String(time),
-      isLiked: false,
-    };
-    const url = `http://localhost:3030/allSneakers`;
-    dispatch(postItem(url, newData, successFunc));
-    // console.log(newData);
-  };
 
   return (
     <div className="formContainer">
@@ -38,7 +21,7 @@ export const Form = () => {
           <h2>Create new sneakers</h2>
         </div>
 
-        <form className="form" id="form" onSubmit={handleSubmit(submit)}>
+        <form className="form" id="form" onSubmit={handleSubmit(addItem)}>
           <div className="form__control">
             <label>Sneakers image</label>
             <input

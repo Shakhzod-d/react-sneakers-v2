@@ -1,30 +1,42 @@
 import React, { useEffect } from 'react';
 import { CardContainer, Header, Modal, Wrapper } from '../../components';
-
+import { collection, getDocs, limit, query, orderBy, startAfter } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
+import { db } from '../../firebase-config.js';
 
-import { deleteItem, fetchItems, likeSneakers, postItem } from '../../redux/thunk';
 import { useNavigate } from 'react-router-dom';
 import { addToFavorites } from './helpers';
 import { MUIPagination } from '../../components/Pagination/Pagination';
+import MyLoader from '../../components/ContentLoader/ContentLoader';
 
 export const Home = () => {
-  const [pageCount, setPageCount] = React.useState(1);
+  const [pageCount, setPageCount] = React.useState(0);
   const [isOpen, setOpen] = React.useState(false);
+  const [sneakers, setSneakers] = React.useState([]);
+  const [response, setResponse] = React.useState(null);
+  const [isLoading, setLoading] = React.useState(true);
   const { allSneakers } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigete = useNavigate();
+  const sneakersRef = query(collection(db, 'sneakers'), limit(20));
 
-  const inc = () => {
-    setPageCount((prevValue) => prevValue + 1);
+  const fetchItems = async () => {
+    setLoading(true);
+    const res = await getDocs(sneakersRef);
+    const data = res.docs.map((item) => {
+      const newObj = {
+        ...item.data(),
+        id: item.id,
+      };
+      return newObj;
+    });
+    setSneakers(data);
+    setLoading(false);
   };
 
   useEffect(() => {
-    const mainUrl = `http://localhost:3030`;
-    const restUrl = `/allSneakers/?_page=${pageCount}&_limit=4`;
-    dispatch(fetchItems(`${mainUrl}${restUrl}`, `SAVE_ALL_SNEAKERS`));
-    navigete(restUrl);
-  }, [pageCount]);
+    fetchItems();
+  }, []);
 
   return (
     <div className="homeContainer">
@@ -33,15 +45,8 @@ export const Home = () => {
         <Header open={() => setOpen(true)} />
       </Wrapper>
       <Wrapper>
-        <CardContainer onClickItem={addToFavorites} items={allSneakers} />
-        <MUIPagination changePageCount={setPageCount} />
-        <div style={{ margin: '4rem auto' }}>
-          <button onClick={() => setPageCount((prevValue) => prevValue - 1)}>
-            Go back one page
-          </button>
-          <span style={{ fontSize: '32px', margin: '1rem' }}>{pageCount}</span>
-          <button onClick={() => inc()}>Go next page</button>
-        </div>
+        <CardContainer isLoading={isLoading} onClickItem={addToFavorites} items={sneakers} />
+        {/* <MUIPagination changePageCount={setPageCount} /> */}
       </Wrapper>
     </div>
   );

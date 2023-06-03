@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/allSneakers/*',
+      path: '/allSneakers',
       element: <Home />,
     },
     {

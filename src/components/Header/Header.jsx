@@ -17,7 +17,7 @@ export const Header = ({ open }) => {
     <div className="headerContainer">
       <div
         className="headerLeft"
-        onClick={() => navigate(`/allSneakers/`)}
+        onClick={() => navigate(`/allSneakers`)}
         style={{ cursor: 'pointer' }}
       >
         <img className="logo" src="/assets/images/logo.png" alt="" />
@@ -48,6 +48,3 @@ export const Header = ({ open }) => {
     </div>
   );
 };
-
-// default export
-// named export
