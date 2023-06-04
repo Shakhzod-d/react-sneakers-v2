@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { CardContainer, Header, Wrapper } from '../../components';
+import { collection } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems } from '../../redux/thunk';
-import { addToFavorites } from '../home/helpers';
+import { fetchItems, toggleLike } from '../../redux/thunk';
+import { CardContainer, Header, Wrapper } from '../../components';
+
+import { db } from '../../firebase-config';
 
 export const Favorites = () => {
-  const { allSneakers } = useSelector((state) => state);
+  const { favorites, isLoading } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const favoritesRef = collection(db, 'favorites');
 
   useEffect(() => {
-    dispatch(fetchItems(`http://localhost:3030/favorites`, `SAVE_ALL_SNEAKERS`));
+    dispatch(fetchItems(favoritesRef, `SAVE_FAVORITE_SNEAKERS`));
   }, []);
 
   return (
@@ -18,7 +21,11 @@ export const Favorites = () => {
         <Header />
       </Wrapper>
       <Wrapper>
-        <CardContainer onClickItem={addToFavorites} items={allSneakers} />
+        <CardContainer
+          isLoading={isLoading}
+          addToFavorites={(item) => dispatch(toggleLike(item, favoritesRef))}
+          items={favorites}
+        />
       </Wrapper>
     </div>
   );

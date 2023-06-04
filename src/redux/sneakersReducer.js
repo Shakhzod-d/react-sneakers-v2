@@ -1,5 +1,5 @@
 const initialState = {
-  isLoading: false,
+  isLoading: true,
   allSneakers: [],
   favorites: [],
 };
@@ -15,6 +15,7 @@ const saveAllSneakers = (state, allSneakers = []) => {
   return {
     ...state,
     allSneakers: allSneakers,
+    isLoading: false,
   };
 };
 
@@ -22,6 +23,7 @@ const saveFavoriteSneakers = (state, favorites = []) => {
   return {
     ...state,
     favorites,
+    isLoading: false,
   };
 };
 
