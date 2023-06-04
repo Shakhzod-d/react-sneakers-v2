@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Header.css';
 
-export const Header = ({ open }) => {
+export const Header = ({ open = () => {} }) => {
   const navigate = useNavigate();
 
   const openFavoritesPage = () => {

@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
 import { CardContainer, Header, Modal, Wrapper } from '../../components';
-import { collection, getDocs, addDoc, limit, query, orderBy, startAfter } from 'firebase/firestore';
+import { collection, limit, query } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { db } from '../../firebase-config.js';
 
 import { useNavigate } from 'react-router-dom';
-// import { addToFavorites } from './helpers';
-import { MUIPagination } from '../../components/Pagination/Pagination';
-import MyLoader from '../../components/ContentLoader/ContentLoader';
+
 import { fetchItems, toggleLike } from '../../redux/thunk';
 
 export const Home = () => {
-  const [isOpen, setOpen] = React.useState(false);
-
-  const { allSneakers, isLoading } = useSelector((state) => state);
+  const { allSneakers, isLoading, isCartOpen } = useSelector((state) => state);
   const dispatch = useDispatch();
   const navigete = useNavigate();
   const sneakersRef = query(collection(db, 'sneakers'), limit(20));
@@ -25,9 +21,9 @@ export const Home = () => {
 
   return (
     <div className="homeContainer">
-      <Modal isOpen={isOpen} close={() => setOpen(false)} />
+      <Modal isOpen={isCartOpen} close={() => dispatch({ type: `CART_MODAL_TOGGLE` })} />
       <Wrapper>
-        <Header open={() => setOpen(true)} />
+        <Header open={() => dispatch({ type: `CART_MODAL_TOGGLE` })} />
       </Wrapper>
       <Wrapper>
         <CardContainer
