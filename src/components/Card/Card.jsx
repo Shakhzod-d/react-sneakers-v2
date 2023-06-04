@@ -5,24 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 import './Card.css';
 
-export const Card = ({ item, onClickItem }) => {
-  const { id, imageUrl, price, title } = item;
+export const Card = ({ item, addToFavorites }) => {
+  const { id, imageUrl, price, title, isLiked } = item;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // const hanleLike = (item) => {
-  //   dispatch({ type: 'ADD_TO_FAVOURITE', payload: item });
-  //   setLiked((prevValue) => !prevValue);
-  // };
 
   return (
     <div className="card">
       <div className="cardHeader">
         <BsHeart
-          className={item.isLiked ? 'red' : 'emptyHeart'}
+          className={isLiked ? 'red' : 'emptyHeart'}
           size={24}
-          onClick={() => onClickItem(item, dispatch, navigate)}
+          onClick={() => addToFavorites(item)}
         />
         <img width={'100%'} src={imageUrl} alt="green sneakers" />
       </div>
