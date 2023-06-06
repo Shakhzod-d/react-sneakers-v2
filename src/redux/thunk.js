@@ -1,4 +1,4 @@
-import { getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getDocs, addDoc, deleteDoc, doc, collection } from 'firebase/firestore';
 import { db } from '../firebase-config';
 
 // General function || HOF high order function
@@ -12,6 +12,7 @@ export const fetchItems = (collectionRef, ACTION_NAME) => async (dispatch) => {
       };
       return newObj;
     });
+
     dispatch({ type: ACTION_NAME, payload: data });
   } catch (error) {
     console.error(error);
@@ -37,5 +38,14 @@ export const toggleLike = (item, favoritesRef) => async (dispatch) => {
     }
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const addToCart = (item) => async (dispatch) => {
+  const cartRef = collection(db, 'cart');
+  const res = await addDoc(cartRef, item);
+  if (res) {
+    window.alert('Successfully added');
+    dispatch(fetchItems(cartRef, `SAVE_CART_ITEMS`));
   }
 };

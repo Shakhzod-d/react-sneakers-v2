@@ -2,7 +2,8 @@ const initialState = {
   isLoading: true,
   allSneakers: [],
   favorites: [],
-  isCartOpen: true,
+  cart: [],
+  isCartOpen: false,
 };
 
 const addTofavourite = (state, item) => {
@@ -36,6 +37,14 @@ const toggleCartModal = (state) => {
   };
 };
 
+const saveCartItems = (state, cart) => {
+  return {
+    ...state,
+    isLoading: false,
+    cart,
+  };
+};
+
 const sneakersReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_FAVOURITE':
@@ -49,6 +58,8 @@ const sneakersReducer = (state = initialState, action) => {
 
     case `CART_MODAL_TOGGLE`:
       return toggleCartModal(state);
+    case `SAVE_CART_ITEMS`:
+      return saveCartItems(state, action.payload);
 
     default:
       return state;
