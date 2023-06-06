@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './Card.css';
 
-export const Card = ({ item, addToFavorites }) => {
+export const Card = ({ item, addToFavorites, addToCart }) => {
   const { id, imageUrl, price, title, isLiked } = item;
 
   const dispatch = useDispatch();
@@ -21,14 +21,15 @@ export const Card = ({ item, addToFavorites }) => {
         />
         <img width={'100%'} src={imageUrl} alt="green sneakers" />
       </div>
-      <p className="cardTitle">{title}</p>
-
+      <div style={{ width: '100%' }}>
+        <p className="cardTitle">{title}</p>
+      </div>
       <div className="cardFooter">
         <div>
           <span className="tsena">Цена:</span> <br /> <span className="summa">{price} руб.</span>
         </div>
         <div>
-          <img src="/assets/icons/add.png" alt="" />
+          <img onClick={() => dispatch(addToCart(item))} src="/assets/icons/add.png" alt="" />
         </div>
       </div>
     </div>
