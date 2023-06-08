@@ -4,10 +4,10 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import './Modal.css';
 
-export const Modal = ({ isOpen, close, items = [] }) => {
+export const Modal = ({ isOpen, close, items = [], deleteItem }) => {
   return (
     <div className={isOpen ? 'modalWrapper' : 'hideModal'}>
-      <div className={isOpen ? 'childrenModal' : 'hideChildren'}>
+      <div className={isOpen ? 'childrenModal' : ''}>
         <div className="modal_header">
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
             <h1>Корзина</h1>
@@ -29,7 +29,7 @@ export const Modal = ({ isOpen, close, items = [] }) => {
                     <p className="summa">{price} руб. </p>
                   </div>
                   <div>
-                    <button className="modal_close_btn" onClick={() => {}}>
+                    <button className="modal_close_btn" onClick={() => deleteItem(item)}>
                       <MdOutlineClose className="modal_close_icon" size={72} />
                     </button>
                   </div>
