@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { AddNewSneakers, Favorites, Home, NotFound } from './pages';
+import { AddNewSneakers, Favorites, Home, NotFound, SneakeresDetails } from './pages';
 
 import './App.css';
 
@@ -17,6 +17,10 @@ function App() {
     {
       path: '/addNewSneakers',
       element: <AddNewSneakers />,
+    },
+    {
+      path: '/details/:cardId',
+      element: <SneakeresDetails />,
     },
     {
       path: '*',
